@@ -15,13 +15,11 @@ const {
 const ObjectId = require("mongoose").Types.ObjectId;
 
 exports.signIn = async (req, res) => {
-    console.log("jjjjjjjjj");
-    // let pass = await encryptPassword("Wappnet@123");
-    // return res.json(pass);
+    
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return res.status(400).json({
-            errors: errors.array()
+            error: errors.array()[0].msg
         });
     }
 
